@@ -3,14 +3,14 @@ var db = require('./models')
 
 
 //HOW TO CREATE A NEW COMMENT
-db.comment.create({
-  name: 'Paul Allen',
-  content: 'This is really neat! Thanks for posting.',
-  articleId: 1
-})
-.then(function(comment) {
-  console.log(comment.get())
-})
+// db.comment.create({
+//   name: 'Paul Allen',
+//   content: 'This is really neat! Thanks for posting.',
+//   articleId: 1
+// })
+// .then(function(comment) {
+//   console.log(comment.get())
+// })
 
 
 

@@ -6,9 +6,20 @@
 <hr />
 <form action="/articles/:id" method="POST">
   <div class="form-group">
-    <label for="comment">Write a comment</label>
-    <textarea type="text" class="form-control" id="comment" name="comment" required></textarea>
+    <label for="name">Name</label>
+    <textarea type="text" class="form-control" id="name" name="name" required></textarea>
   </div>
+<form action="/articles/:id" method="POST">
+  <div class="form-group">
+    <label for="comment">Comment</label>
+    <textarea type="text" class="form-control" id="content" name="content" required></textarea>
+  </div>
+
+  <form action="/articles/:id" method="POST">
+    <div class="form-group">
+      <label for="name">Article ID <%= article.id %>: Please write Id below</label>
+      <textarea type="text" class="form-control" id="articleId" name="articleId" required></textarea>
+    </div>
 <input type="submit" class="btn btn-primary">
 </form>
 <hr />

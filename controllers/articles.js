@@ -70,19 +70,73 @@ router.get('/:id', (req, res) => {
 ////// NEW CODE:
 
 
+
+
+//THIS IS THE POST ARTICLES. --New comment
 router.post('/:id', (req, res) => {
   db.comment.create({
     name: req.body.name,
     content: req.body.content,
+    articleId: req.body.articleId
+     //we might have to add a red.params. articleId: req.body.authorId
   })
   .then((post) => {
-   res.redirect('/:id')
+   res.redirect('/articles/:id')
   })
   .catch((error) => {
     console.log(error)
     res.status(400).render('main/404')
   })
 })
+
+
+
+//SHOW ME ALL THE COMMENTS
+
+router.get('/:id/comments', (req, res) => {
+  db.comment.findAll({
+    where: { articleId: req.params.id },
+  })
+  .then((comments) => {
+    res.render('articles/comments', {comments: comments})
+  })
+  .catch((error) => {
+    console.log(error)
+    res.status(400).render('main/404')
+  })
+})
+
+
+
+
+//this route shows me 1 comment only
+// router.get('/:id/comments', (req, res) => {
+//   db.comment.findOne({
+//     where: { articleId: req.params.id },
+//   })
+//   .then((comments) => {
+//     res.render('articles/comments', {comments: comments})
+//   })
+//   .catch((error) => {
+//     console.log(error)
+//     res.status(400).render('main/404')
+//   })
+// })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
