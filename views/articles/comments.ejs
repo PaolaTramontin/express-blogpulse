@@ -1,8 +1,10 @@
-<h1> comments</h1>
-
-
+<h1>Comments</h1>
 <div class="form-group">
       <% comments.forEach(function(comment) { %>
-        <option value="<%= comment.name %>"><%=comment.content %></option>
+        <br>
+        <div> <%=comment.content %> </div>
+        <div> Comment Written by:<%=comment.name %></div>
       <% }) %>
   </div>
+
+

@@ -32,7 +32,7 @@ router.get('/new', (req, res) => {
 router.get('/:id', (req, res) => {
   db.article.findOne({
     where: { id: req.params.id },
-    include: [db.author]
+    include: [db.author, db.comment],
   })
   .then((article) => {
     if (!article) throw Error()
@@ -46,34 +46,12 @@ router.get('/:id', (req, res) => {
 })
 
 
-
-router.get('/:id', (req, res) => {
-  db.article.findOne({
-    where: { id: req.params.id },
-    include: [db.author],
-    include: [db.comment]
-    
-  })
-  .then((article) => {
-    if (!article) throw Error()
-    console.log(article.author)
-    res.render('articles/show', { article: article })
-  })
-  .catch((error) => {
-    console.log(error)
-    res.status(400).render('main/404')
-  })
-})
 
 
 
 ////// NEW CODE:
-
-
-
-
 //THIS IS THE POST ARTICLES. --New comment
-router.post('/:id', (req, res) => {
+router.post('/:id', (req, res) => {  // articles/1
   db.comment.create({
     name: req.body.name,
     content: req.body.content,
@@ -81,7 +59,7 @@ router.post('/:id', (req, res) => {
      //we might have to add a red.params. articleId: req.body.authorId
   })
   .then((post) => {
-   res.redirect('/articles/:id')
+   res.redirect('/')
   })
   .catch((error) => {
     console.log(error)
@@ -92,8 +70,8 @@ router.post('/:id', (req, res) => {
 
 
 //SHOW ME ALL THE COMMENTS
-
-router.get('/:id/comments', (req, res) => {
+router.get('/:id/comments', (req, res) => {  //artiles
+  //let articleIndex = req.body.articleId
   db.comment.findAll({
     where: { articleId: req.params.id },
   })
