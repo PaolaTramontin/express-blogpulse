@@ -6,19 +6,17 @@
       </div>
     </div>
     <h1>Latest Posts from BlogPulse</h1>
-
     <% articles.forEach(function(a) { %>
       <div class="well">
         <h2>
           <a href="/articles/<%= a.id %>"><%= a.title %></a>
-          <small>by <%= a.author.getFullName() %></small>
+     
         </h2>
         <p>
           <strong><%= moment(a.createdAt).calendar() %></strong>
         </p>
       </div>
     <% }) %>
-
   </div>
   <div class="col-sm-4">
     <h2>About</h2>

@@ -1,7 +1,6 @@
 let express = require('express')
 let db = require('../models')
 let router = express.Router()
-
 // GET /authors - display all authors
 router.get('/', (req, res) => {
   db.author.findAll()
@@ -12,7 +11,6 @@ router.get('/', (req, res) => {
     res.status(400).render('main/404')
   })
 })
-
 // POST /authors - create a new author
 router.post('/', (req, res) => {
   db.author.create({
@@ -27,12 +25,10 @@ router.post('/', (req, res) => {
     res.status(400).render('main/404')
   })
 })
-
 // GET /authors/new - display form for creating a new author
 router.get('/new', (req, res) => {
   res.render('authors/new')
 })
-
 // GET /authors/:id - display a specific author and their posts
 router.get('/:id', (req, res) => {
   db.author.findOne({
@@ -45,5 +41,4 @@ router.get('/:id', (req, res) => {
     res.status(400).render('main/404')
   })
 })
-
 module.exports = router

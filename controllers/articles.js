@@ -45,4 +45,46 @@ router.get('/:id', (req, res) => {
   })
 })
 
+
+
+router.get('/:id', (req, res) => {
+  db.article.findOne({
+    where: { id: req.params.id },
+    include: [db.author],
+    include: [db.comment]
+    
+  })
+  .then((article) => {
+    if (!article) throw Error()
+    console.log(article.author)
+    res.render('articles/show', { article: article })
+  })
+  .catch((error) => {
+    console.log(error)
+    res.status(400).render('main/404')
+  })
+})
+
+
+
+////// NEW CODE:
+
+
+router.post('/:id', (req, res) => {
+  db.comment.create({
+    name: req.body.name,
+    content: req.body.content,
+  })
+  .then((post) => {
+   res.redirect('/:id')
+  })
+  .catch((error) => {
+    console.log(error)
+    res.status(400).render('main/404')
+  })
+})
+
+
+
+
 module.exports = router

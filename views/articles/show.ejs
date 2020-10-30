@@ -1,11 +1,15 @@
 <h1><%= article.title %> <small>by <%= article.author.getFullName() %></small></h1>
-
 <p>
   <strong><%= moment(article.createdAt).calendar() %></strong>
 </p>
-
 <p><%= article.content %></p>
-
 <hr />
-
+<form action="/articles/:id" method="POST">
+  <div class="form-group">
+    <label for="comment">Write a comment</label>
+    <textarea type="text" class="form-control" id="comment" name="comment" required></textarea>
+  </div>
+<input type="submit" class="btn btn-primary">
+</form>
+<hr />
 <a href="/">&larr; Back Home</a>
