@@ -41,3 +41,30 @@ h2{
   color:rgb(212, 133, 14);
  
 }
+
+#comments{
+  color:white;
+  background-color: rgba(17, 3, 18, 0.7);
+ text-align:center;
+}
+
+
+.comment{
+  color:white;
+  text-align:center;
+  font-size:50px;
+}
+
+
+.form-group{
+  color:white;
+}
+
+
+.post{
+  color:white;
+}
+
+h1{
+  color:white;
+}
